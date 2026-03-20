@@ -14,6 +14,10 @@ const Footer = () => {
 
   const isMarathi = i18n.language === "mr";
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const toLocalNumbers = (text: string) => {
     if (isMarathi) {
       const marathiDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
@@ -29,7 +33,7 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8 max-w-[1600px] mx-auto px-6 md:px-8 lg:px-4 relative z-10">
         <div className="flex flex-col items-start text-left col-span-1 md:col-span-2 lg:col-span-1 mb-2 lg:mb-0">
           <img
-            src="/about.png"
+            src="/misc/about.png"
             alt="Yashwant Pathak Logo"
             className="w-[180px] md:w-[200px] object-contain drop-shadow-sm mb-5 -mt-2"
           />
@@ -47,6 +51,7 @@ const Footer = () => {
             <li>
               <NavLink
                 to="/about"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />
@@ -56,6 +61,7 @@ const Footer = () => {
             <li>
               <NavLink
                 to="/social-activities"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />
@@ -65,6 +71,7 @@ const Footer = () => {
             <li>
               <NavLink
                 to="/gallery"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />
@@ -74,6 +81,7 @@ const Footer = () => {
             <li>
               <NavLink
                 to="/vadans"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />
@@ -92,6 +100,7 @@ const Footer = () => {
             <li>
               <NavLink
                 to="/registration"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />
@@ -101,6 +110,7 @@ const Footer = () => {
             <li>
               <a
                 href="#"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />
@@ -110,6 +120,7 @@ const Footer = () => {
             <li>
               <a
                 href="#"
+                onClick={scrollToTop}
                 className="flex items-center text-white/90 hover:text-white transition-all duration-300 group"
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/50 group-hover:bg-white mr-3 group-hover:scale-125 transition-all shrink-0" />

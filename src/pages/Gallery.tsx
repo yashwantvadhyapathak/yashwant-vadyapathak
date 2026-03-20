@@ -58,14 +58,14 @@ const mediaItems: MediaItem[] = [
   {
     id: 7,
     type: "image",
-    thumb: "/ganesha_idol.png",
-    src: "/ganesha_idol.png",
+    thumb: "/gallery_images/ganesha_idol.png",
+    src: "/gallery_images/ganesha_idol.png",
   },
   {
     id: 8,
     type: "image",
-    thumb: "/dhol_pathak_hero.png",
-    src: "/dhol_pathak_hero.png",
+    thumb: "/gallery_images/dhol_pathak_hero.png",
+    src: "/gallery_images/dhol_pathak_hero.png",
   },
   {
     id: 9,

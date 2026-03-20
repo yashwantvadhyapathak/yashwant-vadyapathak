@@ -13,12 +13,12 @@ const OurJourney = () => {
     <div className="animate-fade-in">
       <section className="min-h-[50vh] pt-[100px] pb-16 md:py-24 bg-gradient-to-b from-[#FF9933] to-[#e77218] relative overflow-hidden flex flex-col justify-center items-center">
         <img
-          src="/drummer-left.svg"
+          src="/illustrations/drummer-left.svg"
           alt=""
           className="absolute left-[-2%] bottom-0 h-[40%] md:h-[60%] opacity-50 object-contain object-left-bottom pointer-events-none mix-blend-multiply"
         />
         <img
-          src="/drummer-right.svg"
+          src="/illustrations/drummer-right.svg"
           alt=""
           className="absolute right-[-2%] bottom-0 h-[40%] md:h-[60%] opacity-50 object-contain object-right-bottom pointer-events-none mix-blend-multiply"
         />

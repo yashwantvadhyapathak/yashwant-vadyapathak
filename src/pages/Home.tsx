@@ -235,7 +235,7 @@ const Home = () => {
               className="w-full flex justify-center mb-1"
             >
               <img
-                src="/logo.png"
+                src="/logos/logo.png"
                 alt="Yashwant Pathak Logo"
                 className="w-[95%] max-w-[340px] transform scale-110 object-contain drop-shadow-sm"
               />
@@ -317,12 +317,12 @@ const Home = () => {
 
       <section className="bg-[#e77218] pt-10 pb-16 md:pt-12 md:pb-20 relative overflow-hidden flex flex-col items-center">
         <img
-          src="/drummer-left.svg"
+          src="/illustrations/drummer-left.svg"
           alt="Drummer Left"
           className="absolute left-[-2%] bottom-0 h-[50%] md:h-[80%] opacity-70 object-contain object-left-bottom pointer-events-none mix-blend-multiply flex-shrink-0"
         />
         <img
-          src="/drummer-right.svg"
+          src="/illustrations/drummer-right.svg"
           alt="Drummer Right"
           className="absolute right-[-2%] bottom-0 h-[50%] md:h-[80%] opacity-70 object-contain object-right-bottom pointer-events-none mix-blend-multiply flex-shrink-0"
         />
@@ -336,7 +336,7 @@ const Home = () => {
             repeatType: "reverse",
             ease: "easeInOut",
           }}
-          src="/dhol_corner_tr.png"
+          src="/corners/dhol_corner_tr.png"
           alt="Dhol"
           className="absolute top-[8%] left-[7%] md:left-[10%] w-32 md:w-48 object-contain pointer-events-none z-0 mix-blend-multiply"
         />
@@ -349,7 +349,7 @@ const Home = () => {
             repeatType: "reverse",
             ease: "easeInOut",
           }}
-          src="/tasha_corner_tr.png"
+          src="/corners/tasha_corner_tr.png"
           alt="Tasha"
           className="absolute top-[35%] right-[7%] md:right-[10%] w-32 md:w-48 object-contain pointer-events-none z-0 mix-blend-multiply"
         />
@@ -362,7 +362,7 @@ const Home = () => {
             repeatType: "reverse",
             ease: "easeInOut",
           }}
-          src="/flag_corner_tr.png"
+          src="/corners/flag_corner_tr.png"
           alt="Flag"
           className="absolute bottom-[20%] left-[8%] md:left-[12%] w-28 md:w-40 object-contain pointer-events-none z-0 mix-blend-multiply"
         />
@@ -375,7 +375,7 @@ const Home = () => {
             repeatType: "reverse",
             ease: "easeInOut",
           }}
-          src="/cymbals_corner_tr.png"
+          src="/corners/cymbals_corner_tr.png"
           alt="Cymbals"
           className="absolute bottom-[2%] right-[10%] md:right-[15%] w-28 md:w-44 object-contain pointer-events-none z-0 mix-blend-multiply"
         />
@@ -389,7 +389,7 @@ const Home = () => {
             className="shrink-0 mb-4 md:mb-6 pt-4 md:pt-0"
           >
             <img
-              src="/about.png"
+              src="/misc/about.png"
               alt="About Pathak Logo"
               className="max-w-[450px] md:max-w-[600px] w-auto h-auto max-h-[140px] md:max-h-[160px] object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
             />
@@ -526,7 +526,7 @@ const Home = () => {
                   >
                     <div className="absolute inset-0 bg-[#e77218]/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
                     <img
-                      src="/timeline.jpg"
+                      src="/backgrounds/timeline.jpg"
                       alt="Timeline 2023"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
@@ -564,7 +564,7 @@ const Home = () => {
                   >
                     <div className="absolute inset-0 bg-[#e77218]/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
                     <img
-                      src="/timeline.jpg"
+                      src="/backgrounds/timeline.jpg"
                       alt="Timeline 2024"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
@@ -609,7 +609,7 @@ const Home = () => {
                   >
                     <div className="absolute inset-0 bg-[#e77218]/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
                     <img
-                      src="/timeline.jpg"
+                      src="/backgrounds/timeline.jpg"
                       alt="Timeline 2024"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
@@ -667,7 +667,7 @@ const Home = () => {
                   >
                     <div className="absolute inset-0 bg-[#e77218]/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
                     <img
-                      src="/timeline.jpg"
+                      src="/backgrounds/timeline.jpg"
                       alt="Timeline Conclusion"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
@@ -778,7 +778,7 @@ const Home = () => {
           whileInView={{ scale: 1.05 }}
           transition={{ duration: 10, ease: "linear" }}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/timeline.jpg')" }}
+          style={{ backgroundImage: "url('/backgrounds/timeline.jpg')" }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />

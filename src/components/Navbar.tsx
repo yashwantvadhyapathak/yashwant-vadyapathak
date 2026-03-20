@@ -65,10 +65,13 @@ const Navbar = () => {
           <NavLink
             to="/"
             className="flex items-center justify-start py-2"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             <img
-              src="/yashwant_logo.png"
+              src="/logos/yashwant_logo.png"
               alt="Yashwant Pathak Logo"
               className="h-[48px] md:h-[58px] w-auto object-contain transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
             />
@@ -79,6 +82,7 @@ const Navbar = () => {
               <NavLink
                 key={link.path}
                 to={link.path}
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className={({ isActive }) =>
                   `text-[17px] font-medium text-white relative transition-all duration-300 ${
                     isHomeAtTop
@@ -132,7 +136,10 @@ const Navbar = () => {
                     className={({ isActive }) =>
                       `text-[18px] sm:text-[20px] font-semibold tracking-wide transition-all duration-300 ${isActive ? "text-white underline decoration-2 underline-offset-8" : "text-white/80 hover:text-white"}`
                     }
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
                   >
                     {link.name}
                   </NavLink>

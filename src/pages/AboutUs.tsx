@@ -74,35 +74,35 @@ const AboutUs = () => {
       name: isMarathi ? "ढोल" : "Dhol",
       desc: t("About.Dhol"),
       short: isMarathi ? "मोठा आणि खोल" : "Loud & Deep",
-      img: "/gen_dhol.png",
+      img: "/instruments/gen_dhol.png",
       color: "from-orange-500 to-red-600",
     },
     {
       name: isMarathi ? "ताशा" : "Tasha",
       desc: t("About.Tasha"),
       short: isMarathi ? "तीक्ष्ण आणि भेदक" : "Sharp & Piercing",
-      img: "/gen_tasha.png",
+      img: "/instruments/gen_tasha.png",
       color: "from-amber-400 to-orange-500",
     },
     {
       name: isMarathi ? "ध्वज" : "Dhwaj",
       desc: t("About.Dhwaj"),
       short: isMarathi ? "उंच आणि अभिमानाने" : "High & Proud",
-      img: "/gen_dhwaj.png",
+      img: "/instruments/gen_dhwaj.png",
       color: "from-saffron-500 to-orange-600",
     },
     {
       name: isMarathi ? "झांज" : "Zanj",
       desc: t("About.Zanj"),
       short: isMarathi ? "तालबद्ध वादन" : "Rhythmic Clashes",
-      img: "/gen_zanj.png",
+      img: "/instruments/gen_zanj.png",
       color: "from-yellow-400 to-amber-500",
     },
     {
       name: isMarathi ? "संबाळ" : "Sambal",
       desc: t("About.Sambal"),
       short: isMarathi ? "दुहेरी ताल" : "Twin Beats",
-      img: "/gen_sambal.png",
+      img: "/instruments/gen_sambal.png",
       color: "from-orange-400 to-red-500",
     },
   ];
@@ -403,7 +403,7 @@ const AboutUs = () => {
             <div className="flex flex-col md:flex-row bg-gray-50 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
               <div className="flex-1 bg-[#a6b0c6] flex justify-center items-end pt-8">
                 <img
-                  src="/members/1.jpg"
+                  src="/special-thanks/one.jpg"
                   alt={t("Members.SarveshName")}
                   className="w-full object-contain max-h-[500px] object-bottom"
                 />
@@ -438,7 +438,7 @@ const AboutUs = () => {
             <div className="flex flex-col md:flex-row-reverse bg-gray-50 rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
               <div className="flex-1 flex">
                 <img
-                  src="/members/8.jpg"
+                  src="/special-thanks/two.jpg"
                   alt={t("Members.CooperationTitle")}
                   className="w-full h-full object-cover min-h-[350px]"
                 />

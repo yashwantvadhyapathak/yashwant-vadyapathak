@@ -69,16 +69,16 @@ const Home = () => {
   );
 
   const carouselImages = [
-    "/carousel/1.jpg",
-    "/carousel/2.jpeg",
-    "/carousel/3.jpg",
-    "/carousel/4.jpeg",
-    "/carousel/5.jpeg",
-    "/carousel/6.jpeg",
-    "/carousel/7.jpeg",
-    "/carousel/8.jpeg",
-    "/carousel/9.jpg",
-    "/carousel/10.jpeg",
+    "/carousel/01.jpg",
+    "/carousel/02.jpg",
+    "/carousel/03.jpg",
+    "/carousel/04.jpg",
+    "/carousel/05.jpg",
+    "/carousel/06.jpg",
+    "/carousel/07.jpg",
+    "/carousel/08.jpg",
+    "/carousel/09.jpg",
+    "/carousel/10.jpg",
   ];
 
   useEffect(() => {
@@ -216,23 +216,25 @@ const Home = () => {
         </div>
 
         <div
-          className="md:hidden flex flex-col w-full bg-gradient-to-b from-[#ffffff] to-[#faf9f8] pt-[70px] relative overflow-hidden"
+          className="md:hidden flex flex-col w-full bg-gradient-to-b from-[#ffffff] to-[#faf9f8] relative overflow-hidden"
           style={{ height: "100dvh", minHeight: "100dvh", maxHeight: "100dvh" }}
         >
-          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[30%] bg-[#FF9933]/10 rounded-full blur-[80px] pointer-events-none" />
-          <div className="absolute top-[20%] right-[-10%] w-[50%] h-[30%] bg-[#FF9933]/5 rounded-full blur-[60px] pointer-events-none" />
+          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[30%] bg-[#FF9933]/15 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute top-[20%] right-[-10%] w-[50%] h-[30%] bg-[#FF9933]/10 rounded-full blur-[60px] pointer-events-none" />
 
-          <div className="flex flex-col items-center justify-center px-4 pt-1 pb-4 w-full text-center z-10 flex-shrink-0 relative">
+          <div className="flex flex-col items-center justify-center px-4 pt-[45px] pb-4 w-full text-center z-10 flex-shrink-0 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full flex justify-center mb-1"
+              className="w-full flex justify-center mb-1 mt-2"
             >
               <img
                 src="/logos/logo.png"
                 alt="Yashwant Pathak Logo"
-                className="w-[95%] max-w-[340px] transform scale-110 object-contain drop-shadow-sm"
+                loading="eager"
+                fetchPriority="high"
+                className="w-[95%] max-w-[340px] transform scale-105 object-contain drop-shadow-sm"
               />
             </motion.div>
 
@@ -240,9 +242,9 @@ const Home = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-              className="relative w-full max-w-[340px] mb-6 mt-1"
+              className="relative w-full max-w-[360px] mb-5 mt-1"
             >
-              <h1 className="text-[15px] sm:text-[17px] font-medium leading-tight text-gray-600 tracking-wide">
+              <h1 className="text-[15px] sm:text-[17px] font-bold leading-tight text-[#4a4a4a] tracking-wide">
                 {t("Home.CarouselTagline")}
               </h1>
             </motion.div>
@@ -255,13 +257,13 @@ const Home = () => {
             >
               <Link
                 to="/registration"
-                className="flex-1 px-2 py-[13px] bg-gradient-to-r from-[#e77218] to-[#fe8a2f] text-white text-[15px] sm:text-[16px] font-bold rounded-full transition-all active:scale-[0.97] text-center shadow-[0_4px_14px_rgba(231,114,24,0.35)] flex items-center justify-center whitespace-nowrap"
+                className="flex-1 py-3.5 bg-linear-to-r from-[#e77218] to-[#fe8a2f] text-white text-[15px] sm:text-[16px] font-bold rounded-full transition-all active:scale-[0.96] text-center shadow-[0_8px_16px_-4px_rgba(231,114,24,0.4)] flex items-center justify-center whitespace-nowrap"
               >
                 {t("Nav.Register")}
               </Link>
               <Link
                 to="/about"
-                className="flex-1 px-2 py-[13px] bg-white text-[#e77218] border-[1.5px] border-[#e77218] text-[15px] sm:text-[16px] font-bold rounded-full transition-all hover:bg-[#fff9f5] active:scale-[0.97] text-center shadow-[0_2px_10px_rgba(0,0,0,0.04)] flex items-center justify-center whitespace-nowrap"
+                className="flex-1 py-3.5 bg-white text-[#e77218] border border-[#e77218]/30 text-[15px] sm:text-[16px] font-bold rounded-full transition-all hover:bg-[#fff9f5] active:scale-[0.96] text-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.05)] flex items-center justify-center whitespace-nowrap"
               >
                 {t("Nav.About")}
               </Link>
@@ -278,7 +280,7 @@ const Home = () => {
             }}
             className="relative w-full flex-grow flex flex-col items-center justify-start z-10 px-0 overflow-hidden"
           >
-            <div className="relative w-full flex-grow bg-white rounded-t-[36px] md:rounded-none overflow-hidden shadow-[0_-8px_24px_rgba(0,0,0,0.06)] ring-1 ring-black/[0.03]">
+            <div className="relative w-full flex-grow bg-white rounded-t-[40px] md:rounded-none overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.03]">
               {carouselImages.map((img, index) => (
                 <div
                   key={index}
@@ -291,13 +293,15 @@ const Home = () => {
                 />
               ))}
 
-              <div className="flex justify-center gap-[6px] mt-5 absolute bottom-6 w-full z-20">
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent z-5 pointer-events-none" />
+
+              <div className="flex justify-center gap-[6px] mt-5 absolute bottom-8 w-full z-20">
                 {carouselImages.map((_, index) => (
                   <button
                     key={index}
                     className={`h-[6px] rounded-full transition-all duration-400 backdrop-blur-sm ${
                       index === currentSlide
-                        ? "w-[24px] bg-[#e77218] shadow-sm"
+                        ? "w-[24px] bg-[#e77218] shadow-[0_0_8px_rgba(231,114,24,0.8)]"
                         : "w-[8px] bg-white/70 hover:bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
                     }`}
                     onClick={() => goToSlide(index)}
@@ -314,11 +318,15 @@ const Home = () => {
         <img
           src="/illustrations/drummer-left.svg"
           alt="Drummer Left"
+          loading="eager"
+          fetchPriority="high"
           className="absolute left-[-2%] bottom-0 h-[50%] md:h-[80%] opacity-70 object-contain object-left-bottom pointer-events-none mix-blend-multiply flex-shrink-0"
         />
         <img
           src="/illustrations/drummer-right.svg"
           alt="Drummer Right"
+          loading="eager"
+          fetchPriority="high"
           className="absolute right-[-2%] bottom-0 h-[50%] md:h-[80%] opacity-70 object-contain object-right-bottom pointer-events-none mix-blend-multiply flex-shrink-0"
         />
 
@@ -386,6 +394,8 @@ const Home = () => {
             <img
               src="/misc/about.png"
               alt="About Pathak Logo"
+              loading="eager"
+              fetchPriority="high"
               className="max-w-[450px] md:max-w-[600px] w-auto h-auto max-h-[140px] md:max-h-[160px] object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
             />
           </motion.div>
@@ -523,6 +533,8 @@ const Home = () => {
                     <img
                       src="/backgrounds/timeline.jpg"
                       alt="Timeline 2023"
+                      loading="eager"
+                      fetchPriority="high"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
                   </motion.div>
@@ -561,6 +573,8 @@ const Home = () => {
                     <img
                       src="/backgrounds/timeline.jpg"
                       alt="Timeline 2024"
+                      loading="eager"
+                      fetchPriority="high"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
                   </motion.div>
@@ -606,6 +620,8 @@ const Home = () => {
                     <img
                       src="/backgrounds/timeline.jpg"
                       alt="Timeline 2024"
+                      loading="eager"
+                      fetchPriority="high"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
                   </motion.div>
@@ -664,6 +680,8 @@ const Home = () => {
                     <img
                       src="/backgrounds/timeline.jpg"
                       alt="Timeline Conclusion"
+                      loading="eager"
+                      fetchPriority="high"
                       className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-500 ease-in-out"
                     />
                   </motion.div>

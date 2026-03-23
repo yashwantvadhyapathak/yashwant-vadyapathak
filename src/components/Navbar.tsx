@@ -63,7 +63,7 @@ const Navbar = () => {
         }`}
       >
         <div className="flex justify-between items-center h-[70px] px-6 md:px-8 overflow-visible">
-          <NavLink
+          {/* <NavLink
             to="/"
             className="flex items-center justify-start py-2"
             onClick={() => {
@@ -74,11 +74,13 @@ const Navbar = () => {
             <img
               src="/logos/yashwant_logo.png"
               alt="Yashwant Pathak Logo"
+              loading="eager"
+              fetchPriority="high"
               className="h-[48px] md:h-[58px] w-auto object-contain transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
             />
-          </NavLink>
+          </NavLink> */}
 
-          <div className="hidden lg:flex gap-8 items-center">
+          <div className="hidden lg:flex gap-8 items-center ml-auto">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
@@ -106,7 +108,13 @@ const Navbar = () => {
           </div>
 
           <button
-            className="lg:hidden text-white text-2xl bg-transparent border-none p-2 focus:outline-none"
+            className={`lg:hidden ml-auto text-2xl bg-transparent border-none p-2 focus:outline-none z-50 ${
+              isOpen
+                ? "text-white"
+                : isHome && !scrolled
+                  ? "text-[#e77218]"
+                  : "text-white"
+            }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >

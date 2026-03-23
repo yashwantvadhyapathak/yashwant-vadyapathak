@@ -275,7 +275,7 @@ const ContactUs = () => {
                 src="https://maps.google.com/maps?q=YashOne+Maan+Hinjawadi&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 className="absolute inset-0 w-full h-full border-0"
                 allowFullScreen={false}
-                loading="lazy"
+                loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </motion.div>

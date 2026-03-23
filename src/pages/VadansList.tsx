@@ -2,13 +2,10 @@ import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import { MapPin, Music } from "lucide-react";
 
-// Abstract vibrant images representing celebration/festival/Dhol from Unsplash
+// Vibrant images representing our Vadan events
 const abstractImages = [
-  "https://images.unsplash.com/photo-1543781035-906d2c4990cf?auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1533174000255-1bd718d098a5?auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1627916560410-d8d1798363fd?auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1588636906232-a3c3b0eb688e?auto=format&fit=crop&q=80",
+  "/vadan-list/01_Hutatma_Babu_Genu.JPEG",
+  "/vadan-list/02_Nana_Haud.PNG",
 ];
 
 const VadansList = () => {
@@ -91,7 +88,8 @@ const VadansList = () => {
                   <img
                     src={imageSrc}
                     alt={`Vadan location ${idx + 1}`}
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />

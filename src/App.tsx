@@ -11,14 +11,14 @@ import ContactUs from "./pages/ContactUs";
 import Registration from "./pages/Registration";
 import OurJourney from "./pages/OurJourney";
 import NotFound from "./pages/NotFound";
-import SocialDock from "./components/SocialDock";
+// import SocialDock from "./components/SocialDock";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Navbar />
-      <SocialDock />
+      {/* <SocialDock /> */}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

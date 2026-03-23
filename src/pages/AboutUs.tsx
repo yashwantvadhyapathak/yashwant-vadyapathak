@@ -319,6 +319,8 @@ const AboutUs = () => {
                     <img
                       src={item.img}
                       alt={item.title}
+                      loading="eager"
+                      fetchPriority="high"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -360,6 +362,8 @@ const AboutUs = () => {
                   <img
                     src={inst.img}
                     alt={inst.name}
+                    loading="eager"
+                    fetchPriority="high"
                     className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-in-out"
                   />
                   <div className="absolute -bottom-6 right-6 w-12 h-12 rounded-full border-4 border-white bg-orange-50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all z-20 shadow-md">
@@ -405,6 +409,8 @@ const AboutUs = () => {
                 <img
                   src="/special-thanks/one.jpg"
                   alt={t("Members.SarveshName")}
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full object-contain max-h-[500px] object-bottom"
                 />
               </div>
@@ -440,6 +446,8 @@ const AboutUs = () => {
                 <img
                   src="/special-thanks/two.jpg"
                   alt={t("Members.CooperationTitle")}
+                  loading="eager"
+                  fetchPriority="high"
                   className="w-full h-full object-cover min-h-[350px]"
                 />
               </div>

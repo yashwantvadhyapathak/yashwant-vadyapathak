@@ -15,11 +15,15 @@ const OurJourney = () => {
         <img
           src="/illustrations/drummer-left.svg"
           alt=""
+          loading="eager"
+          fetchPriority="high"
           className="absolute left-[-2%] bottom-0 h-[40%] md:h-[60%] opacity-50 object-contain object-left-bottom pointer-events-none mix-blend-multiply"
         />
         <img
           src="/illustrations/drummer-right.svg"
           alt=""
+          loading="eager"
+          fetchPriority="high"
           className="absolute right-[-2%] bottom-0 h-[40%] md:h-[60%] opacity-50 object-contain object-right-bottom pointer-events-none mix-blend-multiply"
         />
         <div className="relative z-10 max-w-[900px] mx-auto px-6 text-center">

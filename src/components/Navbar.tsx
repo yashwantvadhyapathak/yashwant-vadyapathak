@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -67,6 +67,7 @@ const Navbar = () => {
 
   const isHome = location.pathname === "/";
   const isHomeAtTop = isHome && !scrolled;
+  const showMobileLogo = !isHomeAtTop;
 
   return (
     <>
@@ -78,7 +79,25 @@ const Navbar = () => {
             isOpen || isHomeAtTop ? "opacity-0" : "opacity-100"
           } bg-primary/95 backdrop-blur-md shadow-lg pointer-events-none`}
         />
-        <div className="flex justify-between items-center h-[70px] px-6 md:px-8 overflow-visible">
+        <div className="relative flex justify-between items-center h-[70px] px-6 md:px-8 overflow-visible">
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className={`lg:hidden absolute left-4 top-1/2 -translate-y-1/2 h-[70px] flex items-center transition-opacity duration-300 ${
+              showMobileLogo
+                ? "opacity-100 pointer-events-auto"
+                : "opacity-0 pointer-events-none"
+            }`}
+            aria-label="Go to home"
+          >
+            <img
+              src="/logos/logo.png"
+              alt="Yashwant"
+              className="h-18 w-auto object-contain object-left brightness-0 invert"
+              loading="eager"
+            />
+          </Link>
+
           <div className="hidden lg:flex gap-8 items-center ml-auto">
             {navLinks.map((link) => (
               <NavLink
@@ -107,7 +126,7 @@ const Navbar = () => {
           </div>
 
           <button
-            className={`lg:hidden ml-auto text-2xl bg-transparent border-none p-2 focus:outline-none z-50 ${
+            className={`lg:hidden absolute right-4 top-1/2 -translate-y-1/2 text-2xl bg-transparent border-none p-2 focus:outline-none z-50 ${
               isOpen
                 ? "text-white"
                 : isHome && !scrolled

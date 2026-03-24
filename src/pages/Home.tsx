@@ -3,7 +3,7 @@ import type { TouchEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { motion, useScroll } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Users, History, PlayCircle, Music } from "lucide-react";
+import { Users, History, PlayCircle, Music, ChevronDown } from "lucide-react";
 import CountUp from "react-countup";
 
 const Home = () => {
@@ -14,25 +14,53 @@ const Home = () => {
     offset: ["start center", "end 80%"],
   });
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+  const touchEndXRef = useRef<number | null>(null);
+  const touchEndYRef = useRef<number | null>(null);
 
   const minSwipeDistance = 50;
+  const minVerticalDeltaForScroll = 20;
 
   const handleTouchStart = (e: TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
+    const touch = e.targetTouches[0];
+    touchStartXRef.current = touch.clientX;
+    touchStartYRef.current = touch.clientY;
+    touchEndXRef.current = null;
+    touchEndYRef.current = null;
   };
 
   const handleTouchMove = (e: TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    const touch = e.targetTouches[0];
+    touchEndXRef.current = touch.clientX;
+    touchEndYRef.current = touch.clientY;
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    const touchStartX = touchStartXRef.current;
+    const touchStartY = touchStartYRef.current;
+    const touchEndX = touchEndXRef.current;
+    const touchEndY = touchEndYRef.current;
+
+    if (
+      touchStartX === null ||
+      touchEndX === null ||
+      touchStartY === null ||
+      touchEndY === null
+    ) {
+      return;
+    }
+
+    const deltaX = touchStartX - touchEndX;
+    const deltaY = Math.abs(touchStartY - touchEndY);
+
+    // Ignore primarily vertical gestures so page scrolling remains fluid.
+    if (deltaY > minVerticalDeltaForScroll && deltaY > Math.abs(deltaX)) {
+      return;
+    }
+
+    const isLeftSwipe = deltaX > minSwipeDistance;
+    const isRightSwipe = deltaX < -minSwipeDistance;
 
     if (isLeftSwipe) {
       setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
@@ -124,14 +152,14 @@ const Home = () => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="hidden md:block relative w-full h-dvh overflow-hidden">
+        <div className="hidden md:block relative w-full h-svh overflow-hidden">
           {carouselImages.map((img, index) => (
             <div
               key={index}
-              className={`absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out ${
+              className={`absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out ${
                 index === currentSlide
-                  ? "opacity-100 scale-100 z-[1]"
-                  : "opacity-0 scale-110 z-0"
+                  ? "opacity-100 z-[1]"
+                  : "opacity-0 z-0"
               }`}
               style={{
                 backgroundImage: `url(${img})`,
@@ -213,28 +241,45 @@ const Home = () => {
               />
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 8, 0] }}
+            transition={{
+              y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+              opacity: { delay: 1, duration: 1 },
+            }}
+            className="absolute bottom-14 left-1/2 -translate-x-1/2 z-5 pointer-events-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.45)]"
+          >
+            <ChevronDown size={32} className="text-white" />
+          </motion.div>
         </div>
 
         <div
-          className="md:hidden flex flex-col w-full bg-gradient-to-b from-[#ffffff] to-[#faf9f8] relative overflow-hidden"
-          style={{ height: "100dvh", minHeight: "100dvh", maxHeight: "100dvh" }}
+          className="md:hidden flex flex-col w-full bg-[#faf9f8] relative overflow-hidden"
+          style={{ height: "100svh", minHeight: "100svh", maxHeight: "100svh" }}
         >
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[30%] bg-[#FF9933]/15 rounded-full blur-[80px] pointer-events-none" />
           <div className="absolute top-[20%] right-[-10%] w-[50%] h-[30%] bg-[#FF9933]/10 rounded-full blur-[60px] pointer-events-none" />
-
-          <div className="flex flex-col items-center justify-center px-4 pt-[45px] pb-4 w-full text-center z-10 flex-shrink-0 relative">
+          <div className="flex flex-col items-center justify-center px-4 pb-6 w-full text-center z-10 flex-shrink-0 relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full flex justify-center mb-1 mt-2"
+              className="w-full flex justify-center mb-4 mt-2 drop-shadow-sm pointer-events-none"
             >
-              <img
+              <motion.img
+                animate={{ y: [0, -5, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 src="/logos/logo.png"
                 alt="Yashwant Pathak Logo"
                 loading="eager"
                 fetchPriority="high"
-                className="w-[95%] max-w-[340px] transform scale-105 object-contain drop-shadow-sm"
+                className="w-full max-w-[420px] object-contain scale-[1.3] sm:scale-[1.4] origin-top"
               />
             </motion.div>
 
@@ -242,9 +287,9 @@ const Home = () => {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
-              className="relative w-full max-w-[360px] mb-5 mt-1"
+              className="relative w-full max-w-[360px] mb-5 mt-4"
             >
-              <h1 className="text-[15px] sm:text-[17px] font-bold leading-tight text-[#4a4a4a] tracking-wide">
+              <h1 className="text-[15.5px] sm:text-[17px] font-medium leading-tight text-[#c06b10] tracking-wide">
                 {t("Home.CarouselTagline")}
               </h1>
             </motion.div>
@@ -253,17 +298,17 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
-              className="flex flex-row items-center justify-center gap-3 w-full px-2 max-w-[380px]"
+              className="flex flex-row items-center justify-center gap-3 w-full px-2 max-w-[420px]"
             >
               <Link
                 to="/registration"
-                className="flex-1 py-3.5 bg-linear-to-r from-[#e77218] to-[#fe8a2f] text-white text-[15px] sm:text-[16px] font-bold rounded-full transition-all active:scale-[0.96] text-center shadow-[0_8px_16px_-4px_rgba(231,114,24,0.4)] flex items-center justify-center whitespace-nowrap"
+                className="flex-1 py-3.5 bg-[#d37617] hover:bg-[#c26a11] text-white text-[16px] font-bold rounded-full transition-all active:scale-[0.96] text-center shadow-[0_4px_14px_rgba(211,118,23,0.3)] flex items-center justify-center whitespace-nowrap border-2 border-[#d37617]"
               >
                 {t("Nav.Register")}
               </Link>
               <Link
                 to="/about"
-                className="flex-1 py-3.5 bg-white text-[#e77218] border border-[#e77218]/30 text-[15px] sm:text-[16px] font-bold rounded-full transition-all hover:bg-[#fff9f5] active:scale-[0.96] text-center shadow-[0_8px_16px_-4px_rgba(0,0,0,0.05)] flex items-center justify-center whitespace-nowrap"
+                className="flex-1 py-3.5 bg-[#faebdb] hover:bg-[#f6dfc7] text-[#c06b10] border-2 border-[#d37617] text-[16px] font-bold rounded-full transition-all active:scale-[0.96] text-center shadow-[0_4px_14px_rgba(0,0,0,0.02)] flex items-center justify-center whitespace-nowrap"
               >
                 {t("Nav.About")}
               </Link>
@@ -271,20 +316,20 @@ const Home = () => {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{
               duration: 0.9,
               delay: 0.35,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="relative w-full flex-grow flex flex-col items-center justify-start z-10 px-0 overflow-hidden"
+            className="relative w-full flex-grow flex flex-col z-10 px-2.5 pb-[86px]"
           >
-            <div className="relative w-full flex-grow bg-white rounded-t-[40px] md:rounded-none overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.08)] ring-1 ring-black/[0.03]">
+            <div className="relative w-full h-full bg-white rounded-[32px] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.12)] border border-black/5">
               {carouselImages.map((img, index) => (
                 <div
                   key={index}
-                  className={`absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+                  className={`absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-out ${
                     index === currentSlide
                       ? "opacity-100 z-[1]"
                       : "opacity-0 z-0"
@@ -293,16 +338,16 @@ const Home = () => {
                 />
               ))}
 
-              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent z-5 pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent z-5 pointer-events-none" />
 
-              <div className="flex justify-center gap-[6px] mt-5 absolute bottom-8 w-full z-20">
+              <div className="flex justify-center gap-2 mt-5 absolute bottom-4 w-full z-20">
                 {carouselImages.map((_, index) => (
                   <button
                     key={index}
                     className={`h-[6px] rounded-full transition-all duration-400 backdrop-blur-sm ${
                       index === currentSlide
-                        ? "w-[24px] bg-[#e77218] shadow-[0_0_8px_rgba(231,114,24,0.8)]"
-                        : "w-[8px] bg-white/70 hover:bg-white/90 shadow-[0_1px_2px_rgba(0,0,0,0.3)]"
+                        ? "w-[24px] bg-[#e77218]"
+                        : "w-[6px] bg-white/70 hover:bg-white/90"
                     }`}
                     onClick={() => goToSlide(index)}
                     aria-label={`Go to slide ${index + 1}`}
@@ -310,6 +355,18 @@ const Home = () => {
                 ))}
               </div>
             </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 6, 0] }}
+            transition={{
+              y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
+              opacity: { delay: 1, duration: 1 },
+            }}
+            className="absolute bottom-8 right-6 z-30 pointer-events-none"
+          >
+            <ChevronDown size={24} className="text-[#e77218] opacity-80" />
           </motion.div>
         </div>
       </section>

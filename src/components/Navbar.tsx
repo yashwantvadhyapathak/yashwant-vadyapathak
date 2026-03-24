@@ -11,8 +11,25 @@ const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    let ticking = false;
+
+    const updateScrolled = () => {
+      setScrolled((prev) => {
+        // Small hysteresis prevents jitter around threshold.
+        const nextScrolled = prev ? window.scrollY > 14 : window.scrollY > 24;
+        return prev === nextScrolled ? prev : nextScrolled;
+      });
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateScrolled);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -54,32 +71,14 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
-          isOpen
-            ? "bg-transparent shadow-none"
-            : isHome && !scrolled
-              ? "bg-primary md:bg-transparent md:shadow-none shadow-lg"
-              : "bg-primary shadow-lg backdrop-blur-md"
-        }`}
+        className="fixed top-0 left-0 w-full z-50"
       >
+        <div
+          className={`absolute inset-0 transition-opacity duration-300 ease-out ${
+            isOpen || isHomeAtTop ? "opacity-0" : "opacity-100"
+          } bg-primary/95 backdrop-blur-md shadow-lg pointer-events-none`}
+        />
         <div className="flex justify-between items-center h-[70px] px-6 md:px-8 overflow-visible">
-          {/* <NavLink
-            to="/"
-            className="flex items-center justify-start py-2"
-            onClick={() => {
-              setIsOpen(false);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          >
-            <img
-              src="/logos/yashwant_logo.png"
-              alt="Yashwant Pathak Logo"
-              loading="eager"
-              fetchPriority="high"
-              className="h-[48px] md:h-[58px] w-auto object-contain transition-transform duration-300 hover:scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-            />
-          </NavLink> */}
-
           <div className="hidden lg:flex gap-8 items-center ml-auto">
             {navLinks.map((link) => (
               <NavLink
@@ -101,7 +100,7 @@ const Navbar = () => {
             ))}
             <button
               onClick={toggleLanguage}
-              className="px-3 py-1.5 text-[15px] border border-white text-white bg-transparent rounded-md hover:bg-white/20 transition-all duration-300"
+              className="px-3 py-1.5 text-[15px] rounded-md border border-white text-white bg-transparent hover:bg-white/20 transition-all duration-300 drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
             >
               {i18n.language === "en" ? "मराठी" : "English"}
             </button>

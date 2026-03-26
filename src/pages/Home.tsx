@@ -266,7 +266,7 @@ const Home = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full flex justify-center mb-4 mt-2 drop-shadow-sm pointer-events-none"
+              className="w-full flex justify-center mb-4 -mt-1 drop-shadow-sm pointer-events-none"
             >
               <motion.img
                 animate={{ y: [0, -5, 0] }}
@@ -371,7 +371,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-[#e77218] pt-10 pb-16 md:pt-12 md:pb-20 relative overflow-hidden flex flex-col items-center">
+      <section className="bg-[#e77218] pt-6 pb-10 md:pt-8 md:pb-14 relative overflow-hidden flex flex-col items-center">
         <img
           src="/illustrations/drummer-left.svg"
           alt="Drummer Left"
@@ -446,15 +446,113 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="shrink-0 mb-4 md:mb-6 pt-4 md:pt-0"
+            className="shrink-0 mb-4 md:mb-6 pt-1 md:pt-0"
           >
-            <img
-              src="/misc/about.png"
-              alt="About Pathak Logo"
-              loading="eager"
-              fetchPriority="high"
-              className="max-w-[450px] md:max-w-[600px] w-auto h-auto max-h-[140px] md:max-h-[160px] object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]"
-            />
+            <span className="inline-block px-4 py-1 rounded-full bg-white/15 text-white/90 border border-white/25 text-xs md:text-sm font-bold tracking-[0.18em] uppercase mb-3">
+              {t("Home.AboutPathakHomeTag")}
+            </span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-wide drop-shadow-[0_3px_8px_rgba(0,0,0,0.2)]">
+              {t("Home.AboutPathakHomeTitle")}
+            </h2>
+            <div className="mx-auto mt-3 w-20 border-t-4 border-white/70 rounded-full" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="w-full mb-8 md:mb-10"
+          >
+            <div className="rounded-2xl bg-white/10 backdrop-blur-[2px] border border-white/25 shadow-[0_10px_30px_rgba(0,0,0,0.12)] px-4 py-5 md:px-6 md:py-6 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-2 text-white">
+              <div className="flex flex-col items-center justify-center text-center p-2 group">
+                <Users
+                  size={34}
+                  className="mb-2 text-white/90 group-hover:scale-110 transition-transform duration-300"
+                />
+                <h3 className="text-3xl md:text-4xl font-black tracking-tight mb-1 flex items-center justify-center">
+                  <CountUp
+                    start={0}
+                    end={100}
+                    formattingFn={toLocalNumbers}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  >
+                    {({ countUpRef }) => <span ref={countUpRef} />}
+                  </CountUp>
+                  +
+                </h3>
+                <p className="text-sm md:text-base font-medium text-white/90">
+                  {t("Home.Stat1")}
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-center p-2 group">
+                <History
+                  size={34}
+                  className="mb-2 text-white/90 group-hover:scale-110 transition-transform duration-300"
+                />
+                <h3 className="text-3xl md:text-4xl font-black tracking-tight mb-1 flex items-center justify-center">
+                  <CountUp
+                    start={0}
+                    end={3}
+                    formattingFn={toLocalNumbers}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  >
+                    {({ countUpRef }) => <span ref={countUpRef} />}
+                  </CountUp>
+                  +
+                </h3>
+                <p className="text-sm md:text-base font-medium text-white/90">
+                  {t("Home.Stat2")}
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-center p-2 group">
+                <PlayCircle
+                  size={34}
+                  className="mb-2 text-white/90 group-hover:scale-110 transition-transform duration-300"
+                />
+                <h3 className="text-3xl md:text-4xl font-black tracking-tight mb-1 flex items-center justify-center">
+                  <CountUp
+                    start={0}
+                    end={20}
+                    formattingFn={toLocalNumbers}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  >
+                    {({ countUpRef }) => <span ref={countUpRef} />}
+                  </CountUp>
+                  +
+                </h3>
+                <p className="text-sm md:text-base font-medium text-white/90">
+                  {t("Home.Stat3")}
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-center p-2 group">
+                <Music
+                  size={34}
+                  className="mb-2 text-white/90 group-hover:scale-110 transition-transform duration-300"
+                />
+                <h3 className="text-3xl md:text-4xl font-black tracking-tight mb-1 flex items-center justify-center">
+                  <CountUp
+                    start={0}
+                    end={100}
+                    formattingFn={toLocalNumbers}
+                    enableScrollSpy
+                    scrollSpyOnce
+                  >
+                    {({ countUpRef }) => <span ref={countUpRef} />}
+                  </CountUp>
+                  +
+                </h3>
+                <p className="text-sm md:text-base font-medium text-white/90">
+                  {t("Home.Stat4")}
+                </p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -469,7 +567,7 @@ const Home = () => {
                 {t("Home.AboutPathakText")} {t("Home.AboutPathakObjectiveText")}
               </p>
 
-              <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
+              {/* <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
                 {t("Home.AboutPathakFeature1")} {t("Home.AboutPathakFeature2")}{" "}
                 {t("Home.AboutPathakFeature3")}
               </p>
@@ -477,7 +575,7 @@ const Home = () => {
               <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
                 {t("Home.AboutPathakPerformanceText")}{" "}
                 {t("Home.AboutPathakFamilyText")}
-              </p>
+              </p> */}
 
               <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-2 font-medium tracking-wide">
                 {t("Home.AboutPathakCTA")}
@@ -490,11 +588,11 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="shrink-0 mt-4 pb-6 md:pb-0"
+            className="shrink-0 mt-4 pb-2 md:pb-0"
           >
             <Link
               to="/about"
-              className="inline-block px-10 py-3 border-[2px] border-[#4a1202] text-white text-lg font-bold rounded-md transition-all duration-300 shadow-sm hover:bg-[#ffffff] hover:text-[#e77218] hover:-translate-y-0.5 hover:shadow-md"
+              className="inline-flex items-center justify-center px-9 md:px-10 py-3 md:py-3.5 rounded-full text-base md:text-lg font-extrabold tracking-wide text-[#e77218] bg-white border-2 border-white/90 shadow-[0_10px_24px_rgba(0,0,0,0.16)] transition-all duration-300 hover:bg-[#fff4ea] hover:text-[#c85f0f] hover:border-[#fff4ea] hover:-translate-y-1 hover:shadow-[0_14px_28px_rgba(0,0,0,0.2)] focus:outline-none focus-visible:ring-4 focus-visible:ring-white/40"
             >
               {t("Home.MoreInfoBtn")}
             </Link>
@@ -502,7 +600,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-b from-[#fffaf0] to-white relative overflow-hidden">
+      <section className="pt-10 md:pt-12 pb-8 md:pb-10 bg-gradient-to-b from-[#fffaf0] to-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-b from-[#e77218]/5 to-transparent pointer-events-none"></div>
 
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 w-full relative z-10">
@@ -511,7 +609,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-8 md:mb-10"
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-[#e77218]/10 text-[#e77218] text-xs md:text-sm font-bold mb-3 border border-[#e77218]/30 tracking-widest shadow-sm">
               {t("Home.Journey")}
@@ -519,19 +617,19 @@ const Home = () => {
             <h2 className="text-2xl sm:text-3xl md:text-[clamp(1.75rem,3vw,2.5rem)] font-extrabold text-[#e77218] tracking-wide font-sans mb-4 drop-shadow-sm">
               {t("Home.HistoryTitle")}
             </h2>
-            <div className="mx-auto w-16 border-t-4 border-[#e77218] rounded-full shadow-[0_2px_4px_rgba(231,114,24,0.3)] mb-4" />
+            <div className="mx-auto w-16 border-t-4 border-[#e77218] rounded-full shadow-[0_2px_4px_rgba(231,114,24,0.3)]" />
           </motion.div>
 
           <div
             ref={timelineRef}
-            className="relative max-w-[1300px] mx-auto pb-16 px-1.5 md:px-0"
+            className="relative max-w-[1300px] mx-auto pt-0 pb-6 md:pb-8 px-1.5 md:px-0"
           >
             <motion.div
               style={{ scaleY: scrollYProgress, transformOrigin: "top" }}
-              className="absolute left-1/2 -translate-x-1/2 top-4 bottom-0 w-1 bg-gradient-to-b from-[#e77218] via-[#e77218] to-transparent rounded-full shadow-[0_0_10px_rgba(231,114,24,0.3)] z-0"
+              className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#e77218] via-[#e77218] to-transparent rounded-full shadow-[0_0_10px_rgba(231,114,24,0.3)] z-0"
             />
 
-            <div className="relative mb-20 flex w-full pt-[60px] md:pt-0">
+            <div className="relative mb-20 flex w-full pt-[74px] md:pt-0">
               <div className="absolute left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-14 h-14 flex justify-center items-center z-20">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -599,7 +697,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="relative mb-20 flex w-full pt-[60px] md:pt-0">
+            <div className="relative mb-20 flex w-full pt-[74px] md:pt-0">
               <div className="absolute left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-14 h-14 flex justify-center items-center z-20">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -686,7 +784,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="relative flex w-full pt-[60px] md:pt-0">
+            <div className="relative flex w-full pt-[74px] md:pt-0">
               <div className="absolute left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 w-14 h-14 flex justify-center items-center z-20">
                 <motion.div
                   initial={{ scale: 0 }}
@@ -749,99 +847,6 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-[#e77218] py-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-white/5 pointer-events-none" />
-        <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x md:divide-white/20 relative z-10 text-white">
-          <div className="flex flex-col items-center justify-center text-center p-2 group">
-            <Users
-              size={36}
-              className="mb-3 text-white/90 group-hover:scale-110 transition-transform duration-300"
-            />
-            <h3 className="text-3xl md:text-5xl font-black tracking-tight mb-1 flex items-center justify-center">
-              <CountUp
-                start={0}
-                end={100}
-                formattingFn={toLocalNumbers}
-                enableScrollSpy
-                scrollSpyOnce
-              >
-                {({ countUpRef }) => <span ref={countUpRef} />}
-              </CountUp>
-              +
-            </h3>
-            <p className="text-sm md:text-base font-medium text-white/90">
-              {t("Home.Stat1")}
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center justify-center text-center p-2 group">
-            <History
-              size={36}
-              className="mb-3 text-white/90 group-hover:scale-110 transition-transform duration-300"
-            />
-            <h3 className="text-3xl md:text-5xl font-black tracking-tight mb-1 flex items-center justify-center">
-              <CountUp
-                start={0}
-                end={3}
-                formattingFn={toLocalNumbers}
-                enableScrollSpy
-                scrollSpyOnce
-              >
-                {({ countUpRef }) => <span ref={countUpRef} />}
-              </CountUp>
-              +
-            </h3>
-            <p className="text-sm md:text-base font-medium text-white/90">
-              {t("Home.Stat2")}
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center justify-center text-center p-2 group">
-            <PlayCircle
-              size={36}
-              className="mb-3 text-white/90 group-hover:scale-110 transition-transform duration-300"
-            />
-            <h3 className="text-3xl md:text-5xl font-black tracking-tight mb-1 flex items-center justify-center">
-              <CountUp
-                start={0}
-                end={20}
-                formattingFn={toLocalNumbers}
-                enableScrollSpy
-                scrollSpyOnce
-              >
-                {({ countUpRef }) => <span ref={countUpRef} />}
-              </CountUp>
-              +
-            </h3>
-            <p className="text-sm md:text-base font-medium text-white/90">
-              {t("Home.Stat3")}
-            </p>
-          </div>
-
-          <div className="flex flex-col items-center justify-center text-center p-2 group">
-            <Music
-              size={36}
-              className="mb-3 text-white/90 group-hover:scale-110 transition-transform duration-300"
-            />
-            <h3 className="text-3xl md:text-5xl font-black tracking-tight mb-1 flex items-center justify-center">
-              <CountUp
-                start={0}
-                end={100}
-                formattingFn={toLocalNumbers}
-                enableScrollSpy
-                scrollSpyOnce
-              >
-                {({ countUpRef }) => <span ref={countUpRef} />}
-              </CountUp>
-              +
-            </h3>
-            <p className="text-sm md:text-base font-medium text-white/90">
-              {t("Home.Stat4")}
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <motion.div
           initial={{ scale: 1 }}
@@ -876,7 +881,7 @@ const Home = () => {
             >
               <Link
                 to="/registration"
-                className="inline-flex items-center justify-center px-12 py-5 bg-[#ff0000] hover:bg-[#cc0000] text-white text-xl md:text-2xl font-black rounded-full shadow-[0_0_30px_rgba(255,0,0,0.6)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,0,0,0.8)] border-2 border-red-400/30 hover:border-red-400 tracking-wide"
+                className="inline-flex items-center justify-center px-6 md:px-9 py-2 md:py-3 bg-[#e77218] hover:bg-[#cf6412] text-white text-base md:text-lg font-extrabold rounded-full shadow-[0_10px_24px_rgba(231,114,24,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(231,114,24,0.55)] border-2 border-[#ffb16f]/45 hover:border-[#ffd0a6]/60 tracking-wide"
               >
                 {t("Home.RegistrationCTAButton")}
               </Link>

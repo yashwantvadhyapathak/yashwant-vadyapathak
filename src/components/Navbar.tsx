@@ -123,7 +123,7 @@ const Navbar = () => {
                 to={link.path}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                 className={({ isActive }) =>
-                  `text-[17px] font-medium text-white relative transition-all duration-300 ${
+                  `text-[17px] font-semibold text-white relative transition-all duration-300 ${
                     isHomeAtTop
                       ? "hover:text-[#e77218] after:bg-[#e77218]"
                       : "hover:text-white after:bg-white"

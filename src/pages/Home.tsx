@@ -157,9 +157,7 @@ const Home = () => {
             <div
               key={index}
               className={`absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out ${
-                index === currentSlide
-                  ? "opacity-100 z-[1]"
-                  : "opacity-0 z-0"
+                index === currentSlide ? "opacity-100 z-[1]" : "opacity-0 z-0"
               }`}
               style={{
                 backgroundImage: `url(${img})`,
@@ -567,12 +565,12 @@ const Home = () => {
                 {t("Home.AboutPathakText")} {t("Home.AboutPathakObjectiveText")}
               </p>
 
-              {/* <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
+              <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
                 {t("Home.AboutPathakFeature1")} {t("Home.AboutPathakFeature2")}{" "}
                 {t("Home.AboutPathakFeature3")}
               </p>
 
-              <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
+              {/* <p className="text-white text-sm md:text-base lg:text-[1.1rem] leading-snug lg:leading-relaxed mb-3 md:mb-5 font-medium tracking-wide">
                 {t("Home.AboutPathakPerformanceText")}{" "}
                 {t("Home.AboutPathakFamilyText")}
               </p> */}
@@ -686,7 +684,7 @@ const Home = () => {
                   >
                     <div className="absolute inset-0 bg-[#e77218]/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
                     <img
-                      src="/backgrounds/timeline.jpg"
+                      src="/backgrounds/2023.JPG"
                       alt="Timeline 2023"
                       loading="eager"
                       fetchPriority="high"
@@ -726,7 +724,7 @@ const Home = () => {
                   >
                     <div className="absolute inset-0 bg-[#e77218]/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none" />
                     <img
-                      src="/backgrounds/timeline.jpg"
+                      src="/backgrounds/2024.JPEG"
                       alt="Timeline 2024"
                       loading="eager"
                       fetchPriority="high"
@@ -853,7 +851,7 @@ const Home = () => {
           whileInView={{ scale: 1.05 }}
           transition={{ duration: 10, ease: "linear" }}
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/backgrounds/timeline.jpg')" }}
+          style={{ backgroundImage: "url('/backgrounds/background.JPG')" }}
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />

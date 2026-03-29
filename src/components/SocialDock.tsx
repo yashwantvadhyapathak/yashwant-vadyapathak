@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, Youtube, Share2 } from "lucide-react";
+import { Facebook, Instagram, Youtube, ChevronsRight, X } from "lucide-react";
 
 const iconsInfo = [
   { icon: Facebook, label: "Facebook", link: "#", isFill: true },
@@ -16,12 +16,14 @@ const SocialDock = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-    if (!isCollapsed) {
-      timer = setTimeout(() => {
-        setIsCollapsed(true);
-      }, 5000);
+    if (isCollapsed) {
+      return;
     }
+
+    const timer = setTimeout(() => {
+      setIsCollapsed(true);
+    }, 5000);
+
     return () => clearTimeout(timer);
   }, [isCollapsed]);
 
@@ -62,17 +64,36 @@ const SocialDock = () => {
             </a>
           );
         })}
+
+        <button
+          onClick={() => setIsCollapsed(true)}
+          className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-500
+                     ${
+                       isCollapsed
+                         ? "opacity-0 scale-90 pointer-events-none"
+                         : "opacity-100 scale-100"
+                     }`}
+          aria-label="Close Social Links"
+        >
+          <X size={16} />
+        </button>
       </div>
 
       <button
         onClick={() => setIsCollapsed(false)}
         className={`fixed z-60 hidden md:flex items-center justify-center
-                   left-0 top-1/2 -translate-y-1/2 w-8 h-16 bg-[#e77218] text-white opacity-90 hover:opacity-100
-                   rounded-r-2xl shadow-md transition-all duration-500 cursor-pointer
-                   ${isCollapsed ? "translate-x-0" : "-translate-x-full"}`}
+                   left-0 top-1/2 -translate-y-1/2 w-10 h-16 bg-linear-to-b from-[#f08a32] to-[#d9650b] text-white
+                   rounded-r-2xl border border-[#ff9b52] border-l-0
+                   shadow-[0_10px_24px_rgba(231,114,24,0.45)]
+                   transition-all duration-500 cursor-pointer hover:w-9
+                   ${
+                     isCollapsed
+                       ? "-translate-x-[20%] opacity-100"
+                       : "-translate-x-[150%] opacity-0 pointer-events-none"
+                   }`}
         aria-label="Open Social Links"
       >
-        <Share2 size={18} />
+        <ChevronsRight size={18} className="drop-shadow-sm" />
       </button>
     </>
   );

@@ -67,7 +67,7 @@ const SocialDock = () => {
 
         <button
           onClick={() => setIsCollapsed(true)}
-          className={`w-8 h-8 md:w-9 md:h-9 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-500
+          className={`hidden md:flex w-8 h-8 md:w-9 md:h-9 items-center justify-center rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-500
                      ${
                        isCollapsed
                          ? "opacity-0 scale-90 pointer-events-none"

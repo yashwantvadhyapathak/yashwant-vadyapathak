@@ -15,7 +15,6 @@ const Navbar = () => {
 
     const updateScrolled = () => {
       setScrolled((prev) => {
-        // Small hysteresis prevents jitter around threshold.
         const nextScrolled = prev ? window.scrollY > 14 : window.scrollY > 24;
         return prev === nextScrolled ? prev : nextScrolled;
       });

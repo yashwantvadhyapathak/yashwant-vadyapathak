@@ -240,10 +240,8 @@ const Registration = () => {
                   const form = e.currentTarget;
                   const formData = new FormData(form);
 
-                  // Add timestamp
                   formData.append("date", new Date().toLocaleString());
 
-                  // Convert to URL encoded format (required for Apps Script)
                   const searchParams = new URLSearchParams();
                   formData.forEach((value, key) => {
                     searchParams.append(key, value.toString());

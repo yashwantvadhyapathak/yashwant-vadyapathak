@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import { motion, type Variants } from "framer-motion";
 import { MapPin, Music } from "lucide-react";
 
-// Vibrant images representing our Vadan events
 const abstractImages = [
   "/vadan-list/01_Hutatma_Babu_Genu.JPEG",
   "/vadan-list/02_Nana_Haud.PNG",
@@ -16,7 +15,6 @@ const VadansList = () => {
   }) as Record<string, string>;
   const vadansData = Object.values(locationsObj);
 
-  // Function to convert normal numbers to Marathi numerals
   const toMarathiNumeral = (num: number) => {
     const marathiDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
     return num

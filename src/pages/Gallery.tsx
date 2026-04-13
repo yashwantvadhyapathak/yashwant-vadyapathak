@@ -12,7 +12,6 @@ interface MediaItem {
   src: string;
 }
 
-// Fixed array generating paths dynamically pointing to webp versions
 const originalFiles = [
   "001", "002", "003", "004", "005", "007", "008", "009", "0010", "0011",
   "0012", "0013", "0014", "0015", "0016", "0017", "0018", "0019", "0020",
@@ -27,7 +26,6 @@ const mediaItems: MediaItem[] = originalFiles.map((filename, index) => ({
   src: `/gallery_images/full/${filename}.webp`,
 }));
 
-// Memoized item Component to prevent re-renders when gallery state changes
 const GalleryItem = memo(({
   item,
   idx,
@@ -116,7 +114,6 @@ const Gallery = () => {
   useEffect(() => {
     if (selectedItem) {
       document.body.style.overflow = "hidden";
-      // Ensure smooth interaction
       document.documentElement.style.scrollBehavior = "smooth";
     } else {
       document.body.style.overflow = "";
@@ -126,7 +123,6 @@ const Gallery = () => {
     };
   }, [selectedItem]);
 
-  // Keyboard Navigation Support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedItem) return;

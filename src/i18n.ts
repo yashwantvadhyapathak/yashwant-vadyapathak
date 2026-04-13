@@ -512,13 +512,11 @@ const resources = {
   }
 };
 
-// Get saved language preference from localStorage, default to Marathi for first-time visitors
 const getInitialLanguage = (): string => {
   const savedLanguage = localStorage.getItem('preferred-language');
   if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'mr')) {
     return savedLanguage;
   }
-  // Default to Marathi for first-time visitors
   return 'mr';
 };
 
@@ -535,7 +533,6 @@ i18n
     }
   });
 
-// Save language preference to localStorage whenever it changes
 i18n.on('languageChanged', (lng) => {
   localStorage.setItem('preferred-language', lng);
 });

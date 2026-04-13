@@ -23,13 +23,11 @@ async function init() {
     
     console.log(`Processing: ${file}`);
     
-    // Generate Thumbnail
     await sharp(inputPath)
       .resize({ width: 600, withoutEnlargement: true })
       .webp({ quality: 75 })
       .toFile(path.join(thumbDir, webpFilename));
       
-    // Generate Full sized webp
     await sharp(inputPath)
       .resize({ width: 1920, withoutEnlargement: true })
       .webp({ quality: 85 })

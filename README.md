@@ -1,73 +1,156 @@
-# React + TypeScript + Vite
+# Yashwant Vadyapathak - Official Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, bilingual (English & Marathi) website for **Yashwant Vadyapathak**, a traditional Maharashtrian musical organization dedicated to preserving and promoting classical drumming and musical traditions.
 
-Currently, two official plugins are available:
+## 🎵 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This website showcases the rich cultural heritage of Yashwant Vadyapathak, featuring their journey, gallery, social activities, and registration system for aspiring musicians. The site is fully responsive and supports both English and Marathi languages.
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Bilingual Support** - Full support for English and Marathi languages with automatic numeral conversion
+- **Responsive Design** - Optimized for desktop, tablet, and mobile devices
+- **Image Gallery** - Showcase of events and performances with organized galleries
+- **User Registration** - Easy registration form for aspiring musicians with validation
+- **Social Integration** - Connected social media profiles (Facebook, Instagram, YouTube)
+- **Smooth Animations** - Framer Motion animations throughout for enhanced UX
+- **Dark/Light Compatibility** - Theme-aware design system
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend Framework**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Internationalization**: react-i18next
+- **Icons**: Lucide React
+- **Routing**: React Router
+- **Form Handling**: Custom validation with Google Apps Script backend
+- **Linting**: ESLint with TypeScript support
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Project Structure
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── pages/              # Page components
+│   ├── Home.tsx       # Landing page with hero and stats
+│   ├── AboutUs.tsx    # About the pathak
+│   ├── Gallery.tsx    # Image gallery
+│   ├── Registration.tsx  # Member registration
+│   ├── ContactUs.tsx   # Contact information
+│   ├── OurJourney.tsx # Timeline and history
+│   ├── SocialActivities.tsx # Events and activities
+│   ├── VadansList.tsx  # Member/artist list
+│   └── NotFound.tsx    # 404 page
+├── components/         # Reusable components
+│   ├── Navbar.tsx     # Navigation with language switch
+│   ├── Footer.tsx     # Footer section
+│   ├── SocialDock.tsx # Social media floating dock
+│   └── ScrollToTop.tsx # Scroll to top button
+├── App.tsx            # Main app with routing
+├── i18n.ts            # i18n configuration
+└── index.css          # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🌍 Language Support
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **English** - Full English interface
+- **Marathi** - Complete Marathi translation with:
+  - Marathi numeral conversion (०-९)
+  - RTL-ready typography
+  - Cultural context preservation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📋 Key Pages
+
+- **Home** - Hero section with CTAs, carousel, and about preview
+- **About Us** - Detailed history and organization info
+- **Gallery** - Image galleries organized by events and themes
+- **Registration** - Form to join the musical organization
+- **Our Journey** - Timeline and milestone history
+- **Social Activities** - Recent events and performances
+- **Contact Us** - Contact information and inquiry form
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 16.x or higher
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/purisaurabh/yashwant-vadyapathak.git
+cd yashwant-vadyapathak
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+
+# Add required environment variables:
+# VITE_REGISTRATION_SCRIPT_URL=<your-google-apps-script-url>
 ```
+
+### Development
+
+```bash
+# Start development server
+npm run dev
+
+# The app will be available at http://localhost:5173
+```
+
+### Build
+
+```bash
+# Create optimized production build
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+## 🎨 Styling & Theme
+
+- **Primary Color**: Deep Saffron (#D97706)
+- **Framework**: Tailwind CSS with custom configuration
+- **Animations**: Framer Motion for smooth transitions
+- **Icons**: Lucide React icons throughout
+
+## 🔧 Configuration Files
+
+- `tailwind.config.js` - Tailwind CSS customization
+- `tsconfig.json` - TypeScript configuration
+- `vite.config.ts` - Vite bundler configuration
+- `eslint.config.js` - ESLint rules
+- `i18n.ts` - i18n language configuration
+
+## 📱 Responsive Breakpoints
+
+- Mobile: < 640px
+- Tablet: 640px - 1024px
+- Desktop: > 1024px
+
+## 🔌 External Integrations
+
+- **Google Apps Script** - Backend for form submissions
+- **YouTube API** - Embedded videos and channel integration
+- **Social Media APIs** - Facebook, Instagram links
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is proprietary and designed for Yashwant Vadyapathak.
+
+## 📧 Contact
+
+For inquiries about the organization, visit the website or contact through the Contact Us page.
+
+---
+
+Built with ❤️ for the preservation of Maharashtrian musical traditions.

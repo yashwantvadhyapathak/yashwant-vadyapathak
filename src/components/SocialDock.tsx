@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Facebook, Instagram, Youtube, ChevronsRight, X } from "lucide-react";
+import { Facebook, Instagram, Youtube, Share2, X } from "lucide-react";
 
 const iconsInfo = [
   { icon: Facebook, label: "Facebook", link: "#", isFill: true },
@@ -93,7 +93,7 @@ const SocialDock = () => {
                    }`}
         aria-label="Open Social Links"
       >
-        <ChevronsRight size={18} className="drop-shadow-sm" />
+        <Share2 size={18} className="drop-shadow-sm" />
       </button>
     </>
   );

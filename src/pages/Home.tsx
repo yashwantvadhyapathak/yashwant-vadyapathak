@@ -54,7 +54,6 @@ const Home = () => {
     const deltaX = touchStartX - touchEndX;
     const deltaY = Math.abs(touchStartY - touchEndY);
 
-    // Ignore primarily vertical gestures so page scrolling remains fluid.
     if (deltaY > minVerticalDeltaForScroll && deltaY > Math.abs(deltaX)) {
       return;
     }
@@ -114,12 +113,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Disable native scroll restoration by the browser
     if ("scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
 
-    // Force flush scroll multiple times to beat browser quirks and React router hash jumps
     window.scrollTo(0, 0);
     const timeoutId = setTimeout(() => {
       window.scrollTo(0, 0);
@@ -213,7 +210,7 @@ const Home = () => {
 
                   <Link
                     to="/registration"
-                    className="inline-block px-8 py-3 bg-[#e77218] hover:bg-[#d56612] text-white text-lg font-bold rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(231,114,24,0.5)] hover:shadow-[0_0_25px_rgba(231,114,24,0.7)] hover:-translate-y-1"
+                    className="inline-block px-8 py-3 bg-[#e77218] hover:bg-[#d97706] text-white text-lg font-bold rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(231,114,24,0.5)] hover:shadow-[0_0_25px_rgba(231,114,24,0.7)] hover:-translate-y-1"
                   >
                     {t("Nav.Register")}
                   </Link>
@@ -300,7 +297,7 @@ const Home = () => {
             >
               <Link
                 to="/registration"
-                className="flex-1 py-3.5 bg-[#d37617] hover:bg-[#c26a11] text-white text-[16px] font-bold rounded-full transition-all active:scale-[0.96] text-center shadow-[0_4px_14px_rgba(211,118,23,0.3)] flex items-center justify-center whitespace-nowrap border-2 border-[#d37617]"
+                className="flex-1 py-3.5 bg-[#d37617] hover:bg-[#b86205] text-white text-[16px] font-bold rounded-full transition-all active:scale-[0.96] text-center shadow-[0_4px_14px_rgba(211,118,23,0.3)] flex items-center justify-center whitespace-nowrap border-2 border-[#d37617]"
               >
                 {t("Nav.Register")}
               </Link>
@@ -879,7 +876,7 @@ const Home = () => {
             >
               <Link
                 to="/registration"
-                className="inline-flex items-center justify-center px-6 md:px-9 py-2 md:py-3 bg-[#e77218] hover:bg-[#cf6412] text-white text-base md:text-lg font-extrabold rounded-full shadow-[0_10px_24px_rgba(231,114,24,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(231,114,24,0.55)] border-2 border-[#ffb16f]/45 hover:border-[#ffd0a6]/60 tracking-wide"
+                className="inline-flex items-center justify-center px-6 md:px-9 py-2 md:py-3 bg-[#e77218] hover:bg-[#d97706] text-white text-base md:text-lg font-extrabold rounded-full shadow-[0_10px_24px_rgba(231,114,24,0.45)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(231,114,24,0.55)] border-2 border-[#ffb16f]/45 hover:border-[#ffd0a6]/60 tracking-wide"
               >
                 {t("Home.RegistrationCTAButton")}
               </Link>

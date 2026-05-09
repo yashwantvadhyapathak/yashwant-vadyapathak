@@ -56,7 +56,7 @@ const VadansList = () => {
       y: 0,
       transition: shouldReduceMotion
         ? { duration: 0.2 }
-        : { type: "spring", stiffness: 85, damping: 24 },
+        : { type: "spring" as const, stiffness: 85, damping: 24 },
     },
   };
 

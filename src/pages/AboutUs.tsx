@@ -3,9 +3,6 @@ import { motion, animate, useInView, useScroll } from "framer-motion";
 import { useRef, useEffect } from "react";
 import {
   Target,
-  Eye,
-  Heart,
-  Shield,
   Users,
   Award,
   Star,
@@ -126,12 +123,6 @@ const AboutUs = () => {
       img: "/instruments/gen_shankh.png",
       color: "from-cyan-400 to-blue-500",
     },
-  ];
-
-  const values = [
-    { icon: Heart, title: t("About.V1"), desc: t("About.V1Text") },
-    { icon: Shield, title: t("About.V2"), desc: t("About.V2Text") },
-    { icon: Users, title: t("About.V3"), desc: t("About.V3Text") },
   ];
 
   const stats = [
